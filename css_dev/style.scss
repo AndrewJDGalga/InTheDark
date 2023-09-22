@@ -1,5 +1,7 @@
 $alpha-zero: rgba(0,0,0,0);
 $button-size: 10vmin;
+$button-outline-size: 32px;
+$button-outline-color: rgb(200, 200, 200);
 
 @mixin background-fix() {
     background-position: center;
@@ -34,7 +36,7 @@ body {
         width: $button-size;
         height: $button-size;
         &:hover {
-            filter: drop-shadow(0 0 32px rgb(200, 200, 200));
+            filter: drop-shadow(0 0 $button-outline-size $button-outline-color);
         }
         &:active{
             background-size: calc($button-size /2) calc($button-size /2);
