@@ -16,6 +16,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     
     button {
         background-color: $alpha-zero;
@@ -42,6 +43,10 @@ body {
 
 #itd-pause {
     background-image: url('../assets/icons/pause.svg');
+}
+
+#itd-restart {
+    background-image: url('../assets/icons/restart.svg');
 }
 
 .itd-timeout {
