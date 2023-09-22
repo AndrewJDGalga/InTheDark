@@ -15,15 +15,8 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
-.itd-main .itd-visual_timer {
-  width: 100%;
-  height: 64px;
-  background-color: white;
-  border-radius: 100%;
-}
-.itd-main #itd-pause {
+.itd-main button {
   background-color: rgba(0, 0, 0, 0);
-  background-image: url("../assets/icons/pause.svg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -31,7 +24,23 @@ body {
   width: 12%;
   height: 12%;
 }
-.itd-main .itd-timeout {
+
+.itd-visual_timer {
+  width: 100%;
+  height: 64px;
+  background-color: white;
+  border-radius: 100%;
+}
+
+#itd-play {
+  background-image: url("../assets/icons/play.svg");
+}
+
+#itd-pause {
+  background-image: url("../assets/icons/pause.svg");
+}
+
+.itd-timeout {
   color: white;
 }
 

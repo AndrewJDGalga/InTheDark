@@ -16,16 +16,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    .itd-visual_timer {
-        width: 100%;
-        height: 64px;
-        background-color: white;
-        border-radius: 100%;
-    }
-    #itd-pause {
+    
+    button {
         background-color: $alpha-zero;
-        background-image: url('../assets/icons/pause.svg');
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -33,7 +26,24 @@ body {
         width: 12%;
         height: 12%;
     }
-    .itd-timeout {
-        color: white;
-    }
+    
+}
+
+.itd-visual_timer {
+    width: 100%;
+    height: 64px;
+    background-color: white;
+    border-radius: 100%;
+}
+
+#itd-play {
+    background-image: url('../assets/icons/play.svg');
+}
+
+#itd-pause {
+    background-image: url('../assets/icons/pause.svg');
+}
+
+.itd-timeout {
+    color: white;
 }
