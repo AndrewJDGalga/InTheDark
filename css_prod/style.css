@@ -1,4 +1,6 @@
-html {
+html,
+body,
+.itd-main {
   height: 100%;
 }
 
@@ -11,12 +13,16 @@ body {
 .itd-main {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 .itd-main .itd-visual_timer {
   width: 100%;
   height: 64px;
   background-color: white;
   border-radius: 100%;
+}
+.itd-main .itd-timeout {
+  color: white;
 }
 
 /*# sourceMappingURL=style.css.map */
