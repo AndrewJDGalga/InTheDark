@@ -21,6 +21,16 @@ body {
   background-color: white;
   border-radius: 100%;
 }
+.itd-main #itd-pause {
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url("../assets/icons/pause.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  width: 12%;
+  height: 12%;
+}
 .itd-main .itd-timeout {
   color: white;
 }
