@@ -1,0 +1,8 @@
+*
+**/*
+
+!.gitignore
+!css_dev/*.scss
+!css_prod/*.css
+!js/*.js
+!*.html
