@@ -5,15 +5,14 @@ const visualTimer = document.getElementById('itd-visual_timer');
 const timoutNotice = document.getElementsByClassName('itd-timeout')[0];
 
 const flipButtonClass = (button1, button2, className) => {
-    
+    button1.classList.remove(className);
+    button2.classList.add(className);
 };
 
 play.addEventListener('click', ()=>{
-    pause.classList.remove('hidden');
-    play.classList.add('hidden');
+    flipButtonClass(pause, play, 'hidden');
 });
 
 pause.addEventListener('click', ()=>{
-    pause.classList.add('hidden');
-    play.classList.remove('hidden');
+    flipButtonClass(play, pause, 'hidden');
 });
