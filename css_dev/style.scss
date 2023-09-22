@@ -44,7 +44,7 @@ body {
     }
 }
 
-.itd-visual_timer {
+#itd-visual_timer {
     width: 100%;
     height: 64px;
     background-color: white;
@@ -69,4 +69,8 @@ body {
 
 .hidden {
     display: none;
+}
+
+.invisible {
+    visibility: hidden;
 }
