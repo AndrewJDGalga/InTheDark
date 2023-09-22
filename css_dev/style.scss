@@ -8,3 +8,14 @@ body {
     background-color: black;
 }
 
+.itd-main {
+    display: flex;
+    flex-direction: column;
+
+    .itd-visual_timer {
+        width: 100%;
+        height: 64px;
+        background-color: white;
+        border-radius: 100%;
+    }
+}
