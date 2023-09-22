@@ -2,7 +2,10 @@
 **/*
 
 !.gitignore
-!css_dev/*.scss
-!css_prod/*.css
-!js/*.js
+!css_dev/
+!css_prod/
+!js/
 !*.html
+!*.scss
+!*.css
+!*.js
