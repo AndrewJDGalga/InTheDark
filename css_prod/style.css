@@ -13,8 +13,12 @@ body {
 .itd-main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
+  background-image: url("../assets/images/background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 .itd-main button {
   background-color: rgba(0, 0, 0, 0);
@@ -47,6 +51,10 @@ body {
 
 .itd-timeout {
   color: white;
+}
+
+.hidden {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
