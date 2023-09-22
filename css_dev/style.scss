@@ -1,5 +1,5 @@
 $alpha-zero: rgba(0,0,0,0);
-$button-size: 12%;
+$button-size: 10vmin;
 
 @mixin background-fix() {
     background-position: center;
@@ -33,6 +33,12 @@ body {
         border: none;
         width: $button-size;
         height: $button-size;
+        &:hover {
+            filter: drop-shadow(0 0 32px rgb(200, 200, 200));
+        }
+        &:active{
+            background-size: calc($button-size /2) calc($button-size /2);
+        }
     }
 }
 

@@ -26,8 +26,14 @@ body {
   background-size: contain;
   background-color: rgba(0, 0, 0, 0);
   border: none;
-  width: 12%;
-  height: 12%;
+  width: 10vmin;
+  height: 10vmin;
+}
+.itd-main button:hover {
+  filter: drop-shadow(0 0 32px rgb(200, 200, 200));
+}
+.itd-main button:active {
+  background-size: 5vmin 5vmin;
 }
 
 .itd-visual_timer {
