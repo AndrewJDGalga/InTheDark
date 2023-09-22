@@ -1,6 +1,12 @@
 $alpha-zero: rgba(0,0,0,0);
 $button-size: 12%;
 
+@mixin background-fix() {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 html,
 body,
 .itd-main {
@@ -14,26 +20,20 @@ body {
 }
 
 .itd-main {
+    @include background-fix();
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-
     background-image: url('../assets/images/background.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
     
     button {
+        @include background-fix();
         background-color: $alpha-zero;
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
         border: none;
         width: $button-size;
         height: $button-size;
     }
-    
 }
 
 .itd-visual_timer {
