@@ -6,6 +6,7 @@ const timoutNotice = document.getElementsByClassName('itd-timeout')[0];
 const timerStartSeconds = 10;
 let timerCurrent = timerStartSeconds;
 
+/*
 const seconds = 1000;
 let break1 = 2;
 let break2 = 5;
@@ -33,7 +34,7 @@ const timer = () => {
             console.log('stopped, timeleft: ' + timerCurrent);
         }, timerStartSeconds * seconds);
     }
-};
+};*/
 
 const flipButtonClass = (button1, button2, className) => {
     button1.classList.remove(className);
@@ -43,10 +44,10 @@ const flipButtonClass = (button1, button2, className) => {
 play.addEventListener('click', ()=>{
     flipButtonClass(pause, play, 'hidden');
     visualTimer.classList.remove('invisible');
-    timer();
+    //timer();
 });
 
 pause.addEventListener('click', ()=>{
     flipButtonClass(play, pause, 'hidden');
-    timer();
+    //timer();
 });

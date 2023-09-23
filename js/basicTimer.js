@@ -1,59 +1,42 @@
-/*
-    Basic, replaceable timer.
-*/
 
-
-class BasicTimer {
-    constructor(startingTime){
-        this.intervalID = null;
-        this.currentTime = 0;
-        this.startingTime = startingTime;
-        this.states = {
-            STOPPED : Symbol("stopped"),
-            RUNNING : Symbol("running"),
-            PAUSED : Symbol("paused"),
-            RESTART : Symbol("restart"),
-        };
-        this.state = this.states.STOPPED;
+export default class BasicTimer {
+    constructor(startTimeInSeconds) {
+        this.refTime = startTimeInSeconds;
+        this.currentTime = this.refTime;
+        this.seconds = 1000;
+        this.intervalId = null;
+        this.timeoutId = null;
     }
-    process() {
-        switch(this.state) {
-            /*
-            case RESTART:
-                if(this.currentTime < this.startingTime) {
-                    this.currentTime = this.startingTime;
-                }*/
-            case RUNNING:
-                this.intervalID = setInterval(()=>{
+    getCurrentTime() { return this.currentTime; }
+    isRunning() { return this.currentTime > 0; }
 
-                });
-                break;
-            case PAUSED:
-                if(this.intervalID) {
-                    clearInterval(this.intervalID);
-                    this.intervalID = null;
-                }
-                break;
-            case STOPPED:
-                if(this.currentTime < this.startingTime) {
-                    this.currentTime = this.startingTime;
-                }
+    setStartTime(newTimeInSeconds) { this.refTime = newTimeInSeconds; }
+
+    start() {
+        console.log('start');
+        this.intervalId = setInterval(()=>{
+            this.currentTime--;
+            console.log('time: ' + this.currentTime);
+        }, this.seconds);
+        this.timeoutId = setTimeout(()=>{
+            clearInterval(this.intervalId);
+            console.log('timeout');
+        }, this.seconds * this.refTime);
+    }
+
+    pause() {
+        console.log('pause');
+        if(this.intervalId && this.timeoutId){
+            clearInterval(this.intervalId);
+            clearTimeout(this.timeoutId);
+            this.intervalId = null;
+            this.timeoutId = null;
         }
     }
+
     restart() {
-        this.state = this.states.RESTART;
-        process();
-    }
-    start() {
-        this.state = this.states.RUNNING;
-        process();
-    }
-    stop() {
-        this.state = this.states.STOPPED;
-        process();
-    }
-    pause() {
-        this.state = this.states.PAUSED;
-        process();
+        console.log('restart');
+        this.currentTime = this.refTime;
+        start();
     }
 }
