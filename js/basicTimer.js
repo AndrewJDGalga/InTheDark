@@ -14,14 +14,23 @@ export default class BasicTimer {
 
     start() {
         console.log('start');
-        this.intervalId = setInterval(()=>{
-            this.currentTime--;
-            console.log('time: ' + this.currentTime);
-        }, this.seconds);
-        this.timeoutId = setTimeout(()=>{
-            clearInterval(this.intervalId);
-            console.log('timeout');
-        }, this.seconds * this.refTime);
+        if(!this.intervalId && !this.timeoutId){
+            this.intervalId = setInterval(()=>{
+                this.currentTime--;
+                console.log('time: ' + this.currentTime);
+            }, this.seconds);
+            this.timeoutId = setTimeout(()=>{
+                clearInterval(this.intervalId);
+                console.log('timeout');
+            }, this.seconds * this.refTime);
+        } else if (this.timeoutId) {
+            clearTimeout(this.timeoutId);
+            this.timeoutId = null;
+            this.timeoutId = setTimeout(()=>{
+                clearInterval(this.intervalId);
+                console.log('timeout');
+            }, this.seconds * this.currentTime);
+        }
     }
 
     pause() {
@@ -37,6 +46,6 @@ export default class BasicTimer {
     restart() {
         console.log('restart');
         this.currentTime = this.refTime;
-        start();
+        this.start();
     }
 }
