@@ -10,6 +10,32 @@ const timer = new BasicTimer(timerStartSeconds);
 
 let playing = false;
 
+const oscillatFreqMin = 600;
+const oscillatFreqMax = 1000;
+let oscillatID = null;
+
+/*
+const startVisualTimer = (timeleft, break1, break2, break3) = () => {
+    oscillationID = setInterval(()=>{
+
+    }, );
+};*/
+
+/*
+const oscillationEnd = () => {
+
+    if(playing){
+        startOscillation();
+    }
+}
+
+const startOscillation = () => {
+    if(playing && !oscillatID){
+        oscillatID = setTimeout(oscillationEnd, Math.floor(Math.random() * (oscillatFreqMax - oscillatFreqMin) + oscillatFreqMin));
+    }
+}
+*/
+
 const flipButtonClass = (button1, button2, className) => {
     button1.classList.remove(className);
     button2.classList.add(className);
@@ -20,19 +46,23 @@ play.addEventListener('click', ()=>{
     visualTimer.classList.remove('invisible');
     restart.classList.remove('invisible');
     timer.start();
-    playing =true;
+    
+    //startOscillation();
+
+    playing = true;
 });
 
 pause.addEventListener('click', ()=>{
     flipButtonClass(play, pause, 'hidden');
     timer.pause();
+
+    playing = false;
 });
 
 restart.addEventListener('click', ()=>{
     timer.restart();
-    //need to track playstate
-    if(!playing){
-        playing = true;
-        flipButtonClass(pause, play, 'hidden');
-    }
+    flipButtonClass(pause, play, 'hidden');
+
+    playing = true;
 })
+

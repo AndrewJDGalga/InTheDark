@@ -9,6 +9,11 @@ $button-outline-color: rgb(200, 200, 200);
     background-size: contain;
 }
 
+:root {
+    /*need runtime variable*/
+    --randomized-anim: 2s;
+}
+
 html,
 body,
 .itd-main {
@@ -73,4 +78,17 @@ body {
 
 .invisible {
     visibility: hidden;
+}
+
+@keyframes oscillate {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.oscillate {
+    animation: oscillate var(--randomized-anim) ease alternate infinite;
 }
