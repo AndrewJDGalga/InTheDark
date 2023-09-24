@@ -4,25 +4,32 @@ const play = document.getElementById('itd-play');
 const pause = document.getElementById('itd-pause');
 const restart = document.getElementById('itd-restart');
 const visualTimer = document.getElementById('itd-visual_timer');
-const timoutNotice = document.getElementsByClassName('itd-timeout')[0];
+const timeoutNotice = document.getElementsByClassName('itd-timeout')[0];
 const timerStartSeconds = 10;
 const timer = new BasicTimer(timerStartSeconds);
 
 let playing = false;
 
+/*
 const oscillatFreqMin = 600;
 const oscillatFreqMax = 1000;
+*/
 let oscillatID = null;
 
-/*
-const startVisualTimer = (timeleft, break1, break2, break3) = () => {
-    oscillationID = setInterval(()=>{
+let animTime = 2;
 
-    }, );
-};*/
+const setRandomOscillate = (target) =>{
+    if(!target.classList.contains('oscillate')) target.classList.add('oscillate');
+    animTime = Math.random() * (4 - 1) + 1;
+    target.style.setProperty('--randomized-anim', animTime + 's');
+    console.log(target.style.getPropertyValue('--randomized-anim'));
+}
 
-/*
 const oscillationEnd = () => {
+    setRandomOscillate(visualTimer);
+
+    clearTimeout(oscillatID);
+    oscillatID = null;
 
     if(playing){
         startOscillation();
@@ -31,10 +38,10 @@ const oscillationEnd = () => {
 
 const startOscillation = () => {
     if(playing && !oscillatID){
-        oscillatID = setTimeout(oscillationEnd, Math.floor(Math.random() * (oscillatFreqMax - oscillatFreqMin) + oscillatFreqMin));
+        oscillatID = setTimeout(oscillationEnd, 8160); //Math.floor(Math.random() * (3500 - 1100) + 1100));
+        console.log(oscillatID);
     }
 }
-*/
 
 const flipButtonClass = (button1, button2, className) => {
     button1.classList.remove(className);
@@ -47,16 +54,15 @@ play.addEventListener('click', ()=>{
     restart.classList.remove('invisible');
     timer.start();
     
-    //startOscillation();
-
     playing = true;
+    startOscillation();
 });
 
 pause.addEventListener('click', ()=>{
     flipButtonClass(play, pause, 'hidden');
     timer.pause();
 
-    playing = false;
+    //playing = false;
 });
 
 restart.addEventListener('click', ()=>{
