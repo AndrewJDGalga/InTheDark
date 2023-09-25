@@ -5,29 +5,41 @@ const pause = document.getElementById('itd-pause');
 const restart = document.getElementById('itd-restart');
 const visualTimer = document.getElementById('itd-visual_timer');
 const timeoutNotice = document.getElementsByClassName('itd-timeout')[0];
-const timerStartSeconds = 2;
-const itdMainTimer = new BasicTimer(timerStartSeconds, document);
+const timerEndSeconds = 10;
 
-const getRanTimePoint = (originalTime, multiplier, min=0) =>{
-    return Math.random() * ((originalTime * multiplier) - min) + min;
+const oscillatFreq = 21600;
+let oscillatID = null;
+const oscAnimMax = 6;
+const oscAnimMin = 1.5;
+let oscAnimTime = 2;
+
+const getRanTimePoint = (originalTime, min=0) =>{
+    return Math.random() * (originalTime - min) + min;
 };
 
-const break1 = getRanTimePoint(timerStartSeconds, 0.5, 0.5); //timerStartSeconds*0.25;
-const break2 = getRanTimePoint(timerStartSeconds, 0.75, 3); //timerStartSeconds*0.5;
-const endPoint = getRanTimePoint(timerStartSeconds, 1, 7);
+const randomEnd = getRanTimePoint(timerEndSeconds, timerEndSeconds * 0.85)
+let break1 = getRanTimePoint(timerEndSeconds * 0.2, timerEndSeconds * 0.05);
+let break2 = getRanTimePoint(timerEndSeconds * 0.5, timerEndSeconds * 0.3);
+let break3 = getRanTimePoint(timerEndSeconds * 0.8, timerEndSeconds * 0.6);
+
+const itdMainTimer = new BasicTimer(timerEndSeconds, document, 1);
+const itdBp1Timer = new BasicTimer(break1, document, 2);
+const itdBp2Timer = new BasicTimer(break2, document, 3);
+const itdBp3Timer = new BasicTimer(break3, document, 4);
 
 /*
-const oscillatFreqMin = 600;
-const oscillatFreqMax = 1000;
+console.log(break1);
+console.log(break2);
+console.log(break3);
+console.log(randomEnd);
 */
-let oscillatID = null;
 
-let animTime = 2;
+
 
 const setRandomOscillate = (target) =>{
     if(!target.classList.contains('oscillate')) target.classList.add('oscillate');
-    animTime = Math.random() * (6 - 1.5) + 1.5;
-    target.style.setProperty('--randomized-anim', animTime + 's');
+    animTime = Math.random() * (oscAnimMax - oscAnimMin) + oscAnimMin;
+    target.style.setProperty('--randomized-anim', oscAnimTime + 's');
     
     //console.log(target.style.getPropertyValue('--randomized-anim'));
 }
@@ -45,7 +57,7 @@ const endOscillation =() => {
 const startOscillation = () => {
     if(!oscillatID){
         visualTimer.classList.add('oscillate');
-        oscillatID = setTimeout(continueOscillation, 21600); //Math.floor(Math.random() * (3500 - 1100) + 1100));
+        oscillatID = setTimeout(continueOscillation, oscillatFreq);
     }
 }
 
@@ -86,7 +98,7 @@ restart.addEventListener('click', ()=>{
 
 
 document.addEventListener(`btDone${itdMainTimer.getEventNumber()}`, ()=>{
-    console.log('BT done');
+    //console.log('BT done');
     endOscillation();
     visualTimer.classList.add('hidden');
     restart.classList.add('invisible');
@@ -94,4 +106,3 @@ document.addEventListener(`btDone${itdMainTimer.getEventNumber()}`, ()=>{
     flipButtonClass(play, pause, 'hidden');
 });
 
-//timer.stateDone();

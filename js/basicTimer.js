@@ -28,15 +28,15 @@ export default class BasicTimer {
     setState(newState) {
         switch(newState) {
             case this.STATES.DEF_RUN:
-                console.log('run');
+                //console.log('run');
                 this.stateRun();
                 break;
             case this.STATES.NORM_END:
-                console.log('timeout!');
+                //console.log('timeout!');
                 this.stateDone();
                 break;
             case this.STATES.PAUSED:
-                console.log('pause');
+                //console.log('pause');
                 this.statePause();
                 break;
         }
@@ -50,7 +50,7 @@ export default class BasicTimer {
     stateRun() {
         this.intervalId = setInterval(()=>{
             this.currentTime--;
-            console.log(this.currentTime);
+            //console.log(this.currentTime);
         }, this.seconds);
         this.timeoutId = setTimeout(()=>{
             clearInterval(this.intervalId);
