@@ -1,6 +1,6 @@
 
 export default class BasicTimer {
-    constructor(startTimeInSeconds) {
+    constructor(startTimeInSeconds, pageAnchor) {
         this.refTime = startTimeInSeconds;
         this.currentTime = 0;
         this.seconds = 1000;
@@ -11,9 +11,15 @@ export default class BasicTimer {
             NORM_END : Symbol('normal_end'),
             PAUSED : Symbol('paused'),
         }
+        this.btDone = new Event('btDone', {composed: true});
+        this.pageAnchor = pageAnchor;
     }
+    
     getCurrentTime() { return this.currentTime; }
     timeLeft() { return this.currentTime > 0; }
+    stateDone() { 
+        this.pageAnchor.dispatchEvent(this.btDone); 
+    }
 
     setStartTime(newTimeInSeconds) { this.refTime = newTimeInSeconds; }
 
@@ -24,7 +30,8 @@ export default class BasicTimer {
                 this.stateRun();
                 break;
             case this.STATES.NORM_END:
-                console.log('timeout');
+                console.log('timeout!');
+                this.stateDone();
                 break;
             case this.STATES.PAUSED:
                 console.log('pause');
@@ -34,7 +41,7 @@ export default class BasicTimer {
     }
 
     setNormEnd() {
-        this.setState(this.setState.NORM_END);
+        this.setState(this.STATES.NORM_END);
     }
 
     stateRun() {

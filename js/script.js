@@ -5,8 +5,8 @@ const pause = document.getElementById('itd-pause');
 const restart = document.getElementById('itd-restart');
 const visualTimer = document.getElementById('itd-visual_timer');
 const timeoutNotice = document.getElementsByClassName('itd-timeout')[0];
-const timerStartSeconds = 10;
-const timer = new BasicTimer(timerStartSeconds);
+const timerStartSeconds = 2;
+const timer = new BasicTimer(timerStartSeconds, document);
 
 const getRanTimePoint = (originalTime, multiplier, min=0) =>{
     return Math.random() * ((originalTime * multiplier) - min) + min;
@@ -81,3 +81,9 @@ restart.addEventListener('click', ()=>{
     flipButtonClass(pause, play, 'hidden');
 })
 
+
+document.addEventListener('btDone', ()=>{
+    console.log('BT done');
+});
+
+timer.stateDone();
