@@ -12,18 +12,9 @@ const getRanTimePoint = (originalTime, multiplier, min=0) =>{
     return Math.random() * ((originalTime * multiplier) - min) + min;
 };
 
-const break1 = getRanTimePoint(timerStartSeconds, 0.25, 0.5); //timerStartSeconds*0.25;
-const break2 = getRanTimePoint(timerStartSeconds, 0.5, 3); //timerStartSeconds*0.5;
-const break3 = getRanTimePoint(timerStartSeconds, 0.75, 6); //timerStartSeconds*0.75;
+const break1 = getRanTimePoint(timerStartSeconds, 0.5, 0.5); //timerStartSeconds*0.25;
+const break2 = getRanTimePoint(timerStartSeconds, 0.75, 3); //timerStartSeconds*0.5;
 const endPoint = getRanTimePoint(timerStartSeconds, 1, 7);
-
-/*
-console.log(break1);
-console.log(break2);
-console.log(break3);
-console.log(endPoint);
-let playing = false;
-*/
 
 /*
 const oscillatFreqMin = 600;
@@ -41,24 +32,28 @@ const setRandomOscillate = (target) =>{
     //console.log(target.style.getPropertyValue('--randomized-anim'));
 }
 
-const oscillationEnd = () => {
-    setRandomOscillate(visualTimer);
-
+const clearOscillation = () => {
     clearTimeout(oscillatID);
     oscillatID = null;
-
-    if(playing){
-        startOscillation();
-    }
 }
+
+const endOscillation =() => {
+    clearOscillation();
+    visualTimer.classList.remove('oscillate');
+};
 
 const startOscillation = () => {
-    if(playing && !oscillatID){
-        oscillatID = setTimeout(oscillationEnd, 21600); //Math.floor(Math.random() * (3500 - 1100) + 1100));
-        
-        //console.log(oscillatID);
+    if(!oscillatID){
+        visualTimer.classList.add('oscillate');
+        oscillatID = setTimeout(continueOscillation, 21600); //Math.floor(Math.random() * (3500 - 1100) + 1100));
     }
 }
+
+const continueOscillation = () => {
+    setRandomOscillate(visualTimer);
+    clearOscillation();
+    startOscillation();
+};
 
 const flipButtonClass = (button1, button2, className) => {
     button1.classList.remove(className);
@@ -71,7 +66,6 @@ play.addEventListener('click', ()=>{
     restart.classList.remove('invisible');
     timer.start();
     
-    playing = true;
     startOscillation();
 });
 
@@ -79,13 +73,11 @@ pause.addEventListener('click', ()=>{
     flipButtonClass(play, pause, 'hidden');
     timer.pause();
 
-    //playing = false;
+    endOscillation();
 });
 
 restart.addEventListener('click', ()=>{
     timer.restart();
     flipButtonClass(pause, play, 'hidden');
-
-    playing = true;
 })
 

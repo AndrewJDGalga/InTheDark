@@ -42,7 +42,6 @@ body {
 }
 
 #itd-visual_timer {
-  width: 100%;
   height: 64px;
   background-color: white;
   border-radius: 100%;
@@ -82,6 +81,21 @@ body {
 }
 .oscillate {
   animation: oscillate var(--randomized-anim) ease alternate infinite;
+}
+
+.full {
+  width: 100%;
+  height: 64px;
+}
+
+.mid {
+  width: 50%;
+  height: 96px;
+}
+
+.last {
+  width: 25%;
+  height: 128px;
 }
 
 /*# sourceMappingURL=style.css.map */
