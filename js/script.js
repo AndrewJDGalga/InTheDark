@@ -22,10 +22,10 @@ let break1 = getRanTimePoint(timerEndSeconds * 0.2, timerEndSeconds * 0.05);
 let break2 = getRanTimePoint(timerEndSeconds * 0.5, timerEndSeconds * 0.3);
 let break3 = getRanTimePoint(timerEndSeconds * 0.8, timerEndSeconds * 0.6);
 
-const itdMainTimer = new BasicTimer(timerEndSeconds, document, 1);
-const itdBp1Timer = new BasicTimer(break1, document, 2);
-const itdBp2Timer = new BasicTimer(break2, document, 3);
-const itdBp3Timer = new BasicTimer(break3, document, 4);
+const itdMainTimer = new BasicTimer(timerEndSeconds, document, 0);
+const itdBp1Timer = new BasicTimer(break1, document, 1);
+const itdBp2Timer = new BasicTimer(break2, document, 2);
+const itdBp3Timer = new BasicTimer(break3, document, 3);
 
 /*
 console.log(break1);
@@ -81,18 +81,31 @@ play.addEventListener('click', ()=>{
     if(!timeoutNotice.classList.contains('hidden')) timeoutNotice.classList.add('hidden');
     
     itdMainTimer.start();
+    itdBp1Timer.start();
+    itdBp2Timer.start();
+    itdBp3Timer.start();
+
     startOscillation();
 });
 
 pause.addEventListener('click', ()=>{
     flipButtonClass(play, pause, 'hidden');
+
     itdMainTimer.pause();
+    itdBp1Timer.pause();
+    itdBp2Timer.pause();
+    itdBp3Timer.pause();
 
     endOscillation();
 });
 
 restart.addEventListener('click', ()=>{
+    
     itdMainTimer.restart();
+    itdBp1Timer.restart();
+    itdBp2Timer.restart();
+    itdBp3Timer.restart();
+
     flipButtonClass(pause, play, 'hidden');
 })
 
@@ -106,3 +119,12 @@ document.addEventListener(`btDone${itdMainTimer.getEventNumber()}`, ()=>{
     flipButtonClass(play, pause, 'hidden');
 });
 
+document.addEventListener(`btDone${itdBp1Timer.getEventNumber()}`, ()=>{
+
+});
+document.addEventListener(`btDone${itdBp2Timer.getEventNumber()}`, ()=>{
+    
+});
+document.addEventListener(`btDone${itdBp3Timer.getEventNumber()}`, ()=>{
+    
+});
