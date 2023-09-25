@@ -20,9 +20,10 @@ let animTime = 2;
 
 const setRandomOscillate = (target) =>{
     if(!target.classList.contains('oscillate')) target.classList.add('oscillate');
-    animTime = Math.random() * (4 - 1) + 1;
+    animTime = Math.random() * (6 - 1.5) + 1.5;
     target.style.setProperty('--randomized-anim', animTime + 's');
-    console.log(target.style.getPropertyValue('--randomized-anim'));
+    
+    //console.log(target.style.getPropertyValue('--randomized-anim'));
 }
 
 const oscillationEnd = () => {
@@ -38,8 +39,9 @@ const oscillationEnd = () => {
 
 const startOscillation = () => {
     if(playing && !oscillatID){
-        oscillatID = setTimeout(oscillationEnd, 8160); //Math.floor(Math.random() * (3500 - 1100) + 1100));
-        console.log(oscillatID);
+        oscillatID = setTimeout(oscillationEnd, 21600); //Math.floor(Math.random() * (3500 - 1100) + 1100));
+        
+        //console.log(oscillatID);
     }
 }
 
