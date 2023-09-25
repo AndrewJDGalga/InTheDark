@@ -8,7 +8,22 @@ const timeoutNotice = document.getElementsByClassName('itd-timeout')[0];
 const timerStartSeconds = 10;
 const timer = new BasicTimer(timerStartSeconds);
 
+const getRanTimePoint = (originalTime, multiplier, min=0) =>{
+    return Math.random() * ((originalTime * multiplier) - min) + min;
+};
+
+const break1 = getRanTimePoint(timerStartSeconds, 0.25, 0.5); //timerStartSeconds*0.25;
+const break2 = getRanTimePoint(timerStartSeconds, 0.5, 3); //timerStartSeconds*0.5;
+const break3 = getRanTimePoint(timerStartSeconds, 0.75, 6); //timerStartSeconds*0.75;
+const endPoint = getRanTimePoint(timerStartSeconds, 1, 7);
+
+/*
+console.log(break1);
+console.log(break2);
+console.log(break3);
+console.log(endPoint);
 let playing = false;
+*/
 
 /*
 const oscillatFreqMin = 600;
