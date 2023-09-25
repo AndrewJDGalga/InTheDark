@@ -63,9 +63,12 @@ const flipButtonClass = (button1, button2, className) => {
 play.addEventListener('click', ()=>{
     flipButtonClass(pause, play, 'hidden');
     visualTimer.classList.remove('invisible');
+    visualTimer.classList.remove('hidden');
     restart.classList.remove('invisible');
-    timer.start();
+
+    if(!timeoutNotice.classList.contains('hidden')) timeoutNotice.classList.add('hidden');
     
+    timer.start();
     startOscillation();
 });
 
@@ -84,6 +87,11 @@ restart.addEventListener('click', ()=>{
 
 document.addEventListener('btDone', ()=>{
     console.log('BT done');
+    endOscillation();
+    visualTimer.classList.add('hidden');
+    restart.classList.add('invisible');
+    timeoutNotice.classList.remove('hidden');
+    flipButtonClass(play, pause, 'hidden');
 });
 
-timer.stateDone();
+//timer.stateDone();
