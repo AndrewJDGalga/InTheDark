@@ -41,6 +41,7 @@ export default class BasicTimer {
     }
 
     setNormEnd() {
+        this.statePause();
         this.setState(this.STATES.NORM_END);
     }
 
@@ -67,7 +68,7 @@ export default class BasicTimer {
     start() {
         if(!this.intervalId && !this.timeoutId && !this.timeLeft()){
             this.currentTime = this.refTime;
-           this.setState(this.STATES.DEF_RUN);
+            this.setState(this.STATES.DEF_RUN);
         } else if ( this.timeLeft()) {
            this.setState(this.STATES.DEF_RUN);
         }
