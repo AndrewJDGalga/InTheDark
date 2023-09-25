@@ -6,7 +6,7 @@ const restart = document.getElementById('itd-restart');
 const visualTimer = document.getElementById('itd-visual_timer');
 const timeoutNotice = document.getElementsByClassName('itd-timeout')[0];
 const timerStartSeconds = 2;
-const timer = new BasicTimer(timerStartSeconds, document);
+const itdMainTimer = new BasicTimer(timerStartSeconds, document);
 
 const getRanTimePoint = (originalTime, multiplier, min=0) =>{
     return Math.random() * ((originalTime * multiplier) - min) + min;
@@ -68,24 +68,24 @@ play.addEventListener('click', ()=>{
 
     if(!timeoutNotice.classList.contains('hidden')) timeoutNotice.classList.add('hidden');
     
-    timer.start();
+    itdMainTimer.start();
     startOscillation();
 });
 
 pause.addEventListener('click', ()=>{
     flipButtonClass(play, pause, 'hidden');
-    timer.pause();
+    itdMainTimer.pause();
 
     endOscillation();
 });
 
 restart.addEventListener('click', ()=>{
-    timer.restart();
+    itdMainTimer.restart();
     flipButtonClass(pause, play, 'hidden');
 })
 
 
-document.addEventListener('btDone', ()=>{
+document.addEventListener(`btDone${itdMainTimer.getEventNumber()}`, ()=>{
     console.log('BT done');
     endOscillation();
     visualTimer.classList.add('hidden');

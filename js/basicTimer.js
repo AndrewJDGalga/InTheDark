@@ -1,6 +1,6 @@
 
 export default class BasicTimer {
-    constructor(startTimeInSeconds, pageAnchor) {
+    constructor(startTimeInSeconds, pageAnchor, eventNumber=0) {
         this.refTime = startTimeInSeconds;
         this.currentTime = 0;
         this.seconds = 1000;
@@ -11,11 +11,13 @@ export default class BasicTimer {
             NORM_END : Symbol('normal_end'),
             PAUSED : Symbol('paused'),
         }
-        this.btDone = new Event('btDone', {composed: true});
+        this.eventNumber = eventNumber;
+        this.btDone = new Event(`btDone${eventNumber}`, {composed: true});
         this.pageAnchor = pageAnchor;
     }
     
     getCurrentTime() { return this.currentTime; }
+    getEventNumber() { return this.eventNumber; }
     timeLeft() { return this.currentTime > 0; }
     stateDone() { 
         this.pageAnchor.dispatchEvent(this.btDone); 
