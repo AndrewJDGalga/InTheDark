@@ -20,8 +20,8 @@ let fresh = true;
 const audioTrack = new Audio('./assets/audio/jumpscare_test.wav');
 const audioSting = new Audio('./assets/audio/Jumpscare Sound Effect.mp3');
 
-audioTrack.addEventListener('canplaythrough', () =>{
-    audioTrack.play();
+audioSting.addEventListener('canplaythrough', () =>{
+    audioSting.play();
 });
 
 const getRanTimePoint = (originalTime, min=0) =>{
