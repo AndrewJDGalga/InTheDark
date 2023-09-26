@@ -23,7 +23,11 @@ export default class BasicTimer {
         this.pageAnchor.dispatchEvent(this.btDone); 
     }
 
-    setStartTime(newTimeInSeconds) { this.refTime = newTimeInSeconds; }
+    setStartTime(newTimeInSeconds) { 
+        this.refTime = newTimeInSeconds; 
+        //this.currentTime = this.refTime;
+        //console.log(newTimeInSeconds + " id: " + this.eventNumber);
+    }
 
     setState(newState) {
         switch(newState) {
@@ -32,7 +36,7 @@ export default class BasicTimer {
                 this.stateRun();
                 break;
             case this.STATES.NORM_END:
-                //console.log('timeout!');
+                console.log('timeout!');
                 this.stateDone();
                 break;
             case this.STATES.PAUSED:
@@ -43,6 +47,7 @@ export default class BasicTimer {
     }
 
     setNormEnd() {
+        this.currentTime = 0;
         this.statePause();
         this.setState(this.STATES.NORM_END);
     }
@@ -50,7 +55,7 @@ export default class BasicTimer {
     stateRun() {
         this.intervalId = setInterval(()=>{
             this.currentTime--;
-            //console.log(this.currentTime);
+            //console.log(this.currentTime + " id: " + this.eventNumber);
         }, this.seconds);
         this.timeoutId = setTimeout(()=>{
             clearInterval(this.intervalId);
@@ -71,7 +76,7 @@ export default class BasicTimer {
         if(!this.intervalId && !this.timeoutId && !this.timeLeft()){
             this.currentTime = this.refTime;
             this.setState(this.STATES.DEF_RUN);
-        } else if ( this.timeLeft()) {
+        } else if (this.timeLeft()) {
            this.setState(this.STATES.DEF_RUN);
         }
     }
