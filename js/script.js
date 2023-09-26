@@ -37,10 +37,10 @@ const randomizeBreaks = () =>{
 
 const resetVisualTimer = () => {
     if(!visualTimer.classList.contains('full')){
-        visualTimer.classList.add('full');
-        visualTimer.classList.remove('mid');
-        visualTimer.classList.remove('last');
+        visualTimer.classList.add('full');    
     }
+    visualTimer.classList.remove('mid');
+    visualTimer.classList.remove('last');
 };
 
 const itdMainTimer = new BasicTimer(randomEnd, document, 0);
@@ -49,7 +49,7 @@ const itdBp2Timer = new BasicTimer(break2, document, 2);
 
 const setRandomOscillate = (target) =>{
     if(!target.classList.contains('oscillate')) target.classList.add('oscillate');
-    animTime = Math.random() * (oscAnimMax - oscAnimMin) + oscAnimMin;
+    oscAnimTime = Math.random() * (oscAnimMax - oscAnimMin) + oscAnimMin;
     target.style.setProperty('--randomized-anim', oscAnimTime + 's');
 }
 
@@ -87,7 +87,7 @@ play.addEventListener('click', ()=>{
         resetVisualTimer();
         fresh = false;
     }
-    console.log(itdMainTimer.getCurrentTime());
+    //console.log(itdMainTimer.getCurrentTime());
 
     flipButtonClass(pause, play, 'hidden');
     visualTimer.classList.remove('invisible');
@@ -114,24 +114,24 @@ pause.addEventListener('click', ()=>{
 });
 
 restart.addEventListener('click', ()=>{
+    randomizeBreaks();
+    resetVisualTimer();
+
     itdMainTimer.restart();
     itdBp1Timer.restart();
     itdBp2Timer.restart();
-
-    randomizeBreaks();
-    resetVisualTimer();
 
     flipButtonClass(pause, play, 'hidden');
 })
 
 document.addEventListener(`btDone${itdMainTimer.getEventNumber()}`, ()=>{
+    randomizeBreaks();
+    resetVisualTimer();
     endOscillation();
     visualTimer.classList.add('hidden');
     restart.classList.add('invisible');
     timeoutNotice.classList.remove('hidden');
     flipButtonClass(play, pause, 'hidden');
-    randomizeBreaks();
-    resetVisualTimer();
 
     fresh = true;
 });

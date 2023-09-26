@@ -86,11 +86,8 @@ export default class BasicTimer {
     }
 
     restart() {
-        if(this.timeLeft()){
-            this.currentTime = this.refTime;
-        } else {
-            this.setState(this.STATES.PAUSED);
-        }
+        this.currentTime = this.refTime;
+        this.setState(this.STATES.PAUSED);
         this.start();
     }
 }
