@@ -17,12 +17,14 @@ let break1 = 0;
 let break2 = 0;
 let fresh = true;
 
-const audioTrack = new Audio('./assets/audio/jumpscare_test.wav');
+//testtrack
+const audioTrack = new Audio('./assets/audio/Hello, Failure.wav'); //new Audio('./assets/audio/jumpscare_test.wav');
 const audioSting = new Audio('./assets/audio/Jumpscare Sound Effect.mp3');
 
+/*
 audioSting.addEventListener('canplaythrough', () =>{
     audioSting.play();
-});
+});*/
 
 const getRanTimePoint = (originalTime, min=0) =>{
     return Math.random() * (originalTime - min) + min;
@@ -103,6 +105,12 @@ play.addEventListener('click', ()=>{
     itdBp2Timer.start();
 
     startOscillation();
+
+    if(audioTrack.readyState === 4){
+        audioTrack.play();
+    }
+    audioSting.pause();
+    audioSting.currentTime = 0;
 });
 
 pause.addEventListener('click', ()=>{
@@ -113,6 +121,8 @@ pause.addEventListener('click', ()=>{
     itdBp2Timer.pause();
 
     endOscillation();
+
+    audioTrack.pause();
 });
 
 restart.addEventListener('click', ()=>{
@@ -122,6 +132,8 @@ restart.addEventListener('click', ()=>{
     itdMainTimer.restart();
     itdBp1Timer.restart();
     itdBp2Timer.restart();
+
+    audioTrack.currentTime = 0;
 
     flipButtonClass(pause, play, 'hidden');
 })
@@ -136,6 +148,10 @@ document.addEventListener(`btDone${itdMainTimer.getEventNumber()}`, ()=>{
     flipButtonClass(play, pause, 'hidden');
 
     fresh = true;
+
+    audioTrack.pause();
+    audioTrack.currentTime = 0;
+    audioSting.play();
 });
 
 document.addEventListener(`btDone${itdBp1Timer.getEventNumber()}`, ()=>{
