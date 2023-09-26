@@ -17,31 +17,22 @@ const getRanTimePoint = (originalTime, min=0) =>{
     return Math.random() * (originalTime - min) + min;
 };
 
-const randomEnd = getRanTimePoint(timerEndSeconds, timerEndSeconds * 0.85)
-let break1 = getRanTimePoint(timerEndSeconds * 0.2, timerEndSeconds * 0.05);
-let break2 = getRanTimePoint(timerEndSeconds * 0.5, timerEndSeconds * 0.3);
-let break3 = getRanTimePoint(timerEndSeconds * 0.8, timerEndSeconds * 0.6);
+const randomEnd = getRanTimePoint(timerEndSeconds, timerEndSeconds * 0.8)
+let break1 = getRanTimePoint(timerEndSeconds * 0.3, timerEndSeconds * 0.1);
+let break2 = getRanTimePoint(timerEndSeconds * 0.7, timerEndSeconds * 0.4);
 
-const itdMainTimer = new BasicTimer(timerEndSeconds, document, 0);
+const itdMainTimer = new BasicTimer(randomEnd, document, 0);
 const itdBp1Timer = new BasicTimer(break1, document, 1);
 const itdBp2Timer = new BasicTimer(break2, document, 2);
-const itdBp3Timer = new BasicTimer(break3, document, 3);
 
-/*
 console.log(break1);
 console.log(break2);
-console.log(break3);
 console.log(randomEnd);
-*/
-
-
 
 const setRandomOscillate = (target) =>{
     if(!target.classList.contains('oscillate')) target.classList.add('oscillate');
     animTime = Math.random() * (oscAnimMax - oscAnimMin) + oscAnimMin;
     target.style.setProperty('--randomized-anim', oscAnimTime + 's');
-    
-    //console.log(target.style.getPropertyValue('--randomized-anim'));
 }
 
 const clearOscillation = () => {
@@ -83,7 +74,6 @@ play.addEventListener('click', ()=>{
     itdMainTimer.start();
     itdBp1Timer.start();
     itdBp2Timer.start();
-    itdBp3Timer.start();
 
     startOscillation();
 });
@@ -94,37 +84,44 @@ pause.addEventListener('click', ()=>{
     itdMainTimer.pause();
     itdBp1Timer.pause();
     itdBp2Timer.pause();
-    itdBp3Timer.pause();
 
     endOscillation();
 });
+
+const resetVisualTimer = () => {
+    if(!visualTimer.classList.contains('full')){
+        visualTimer.classList.add('full');
+        visualTimer.classList.remove('mid');
+        visualTimer.classList.remove('last');
+    }
+};
 
 restart.addEventListener('click', ()=>{
     
     itdMainTimer.restart();
     itdBp1Timer.restart();
     itdBp2Timer.restart();
-    itdBp3Timer.restart();
+
+    resetVisualTimer();
 
     flipButtonClass(pause, play, 'hidden');
 })
 
 
 document.addEventListener(`btDone${itdMainTimer.getEventNumber()}`, ()=>{
-    //console.log('BT done');
     endOscillation();
     visualTimer.classList.add('hidden');
     restart.classList.add('invisible');
     timeoutNotice.classList.remove('hidden');
     flipButtonClass(play, pause, 'hidden');
+    resetVisualTimer();
 });
 
 document.addEventListener(`btDone${itdBp1Timer.getEventNumber()}`, ()=>{
-
+    visualTimer.classList.remove('full');
+    visualTimer.classList.add('mid');
 });
 document.addEventListener(`btDone${itdBp2Timer.getEventNumber()}`, ()=>{
-    
-});
-document.addEventListener(`btDone${itdBp3Timer.getEventNumber()}`, ()=>{
-    
+    visualTimer.classList.remove('mid');
+    visualTimer.classList.add('last');
 });

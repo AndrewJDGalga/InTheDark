@@ -42,9 +42,23 @@ body {
 }
 
 #itd-visual_timer {
-  height: 64px;
-  background-color: white;
   border-radius: 100%;
+  border: solid 1rem rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+#itd-visual_timer::before {
+  position: absolute;
+  content: "";
+  z-index: 1;
+  border-color: transparent;
+  border: inherit;
+  top: -3rem;
+  right: -3rem;
+  bottom: -3rem;
+  left: -3rem;
+  background: inherit;
+  border-radius: 100%;
+  filter: blur(6px);
 }
 
 #itd-play {
@@ -84,19 +98,22 @@ body {
   animation: oscillate var(--randomized-anim) ease alternate infinite;
 }
 
-.full {
-  width: 100%;
-  height: 64px;
-}
-
 .mid {
-  width: 50%;
+  width: 25%;
   height: 96px;
+  background-color: rgb(157, 72, 72);
 }
 
 .last {
-  width: 25%;
+  width: 5%;
   height: 128px;
+  background-color: red;
+}
+
+.full {
+  width: 60%;
+  height: 64px;
+  background-color: rgb(218, 218, 218);
 }
 
 /*# sourceMappingURL=style.css.map */
