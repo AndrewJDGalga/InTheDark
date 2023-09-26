@@ -29,10 +29,6 @@ const randomizeBreaks = () =>{
     itdMainTimer.setStartTime(randomEnd);
     itdBp1Timer.setStartTime(break1);
     itdBp2Timer.setStartTime(break2);
-
-    //console.log(break1);
-    //console.log(break2);
-    console.log('randend ' + randomEnd);
 }
 
 const resetVisualTimer = () => {
@@ -87,7 +83,6 @@ play.addEventListener('click', ()=>{
         resetVisualTimer();
         fresh = false;
     }
-    //console.log(itdMainTimer.getCurrentTime());
 
     flipButtonClass(pause, play, 'hidden');
     visualTimer.classList.remove('invisible');
