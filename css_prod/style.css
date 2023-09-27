@@ -24,6 +24,7 @@ body {
   justify-content: space-evenly;
   align-items: center;
   background-image: url("../assets/images/background.png");
+  background-size: auto 100%;
 }
 .itd-main button {
   background-position: center;
@@ -33,12 +34,23 @@ body {
   border: none;
   width: 10vmin;
   height: 10vmin;
+  min-width: 64px;
+  max-width: 192px;
+  min-height: 64px;
+  max-height: 192px;
 }
 .itd-main button:hover {
   filter: drop-shadow(0 0 32px rgb(200, 200, 200));
 }
 .itd-main button:active {
   background-size: 5vmin 5vmin;
+}
+
+.itd-title {
+  width: 50%;
+  min-width: 192px;
+  max-width: 720px;
+  height: auto;
 }
 
 #itd-visual_timer {
@@ -75,7 +87,7 @@ body {
 
 .itd-timeout {
   color: white;
-  font-size: 6em;
+  font-size: 4em;
 }
 
 .hidden {
