@@ -5,7 +5,9 @@
 !css_dev/
 !css_prod/
 !js/
+!php/
 !*.html
 !*.scss
 !*.css
 !*.js
+!appSettings.php
