@@ -1,0 +1,6 @@
+{
+    "timerEndSeconds" : 60,
+    "oscillatFreq" : 21600,
+    "oscAnimMax" : 6,
+    "oscAnimMin" : 1.5
+}

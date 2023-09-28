@@ -11,3 +11,4 @@
 !*.css
 !*.js
 !appSettings.php
+!config.json

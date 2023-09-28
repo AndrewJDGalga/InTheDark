@@ -5,13 +5,15 @@ const pause = document.getElementById('itd-pause');
 const restart = document.getElementById('itd-restart');
 const visualTimer = document.getElementById('itd-visual_timer');
 const timeoutNotice = document.getElementsByClassName('itd-timeout')[0];
+
 const timerEndSeconds = 10;
 
 const oscillatFreq = 21600;
 let oscillatID = null;
 const oscAnimMax = 6;
 const oscAnimMin = 1.5;
-let oscAnimTime = 2;
+//let oscAnimTime = 2;
+
 let randomEnd = 0;
 let break1 = 0;
 let break2 = 0;
@@ -21,18 +23,25 @@ let fresh = true;
 const audioTrack = new Audio('./assets/audio/Hello, Failure.wav'); //new Audio('./assets/audio/jumpscare_test.wav');
 const audioSting = new Audio('./assets/audio/Jumpscare Sound Effect.mp3');
 
-const getRanTimePoint = (originalTime, min=0) =>{
-    return Math.random() * (originalTime - min) + min;
+//from Mozilla
+const getRanTimePoint = (max, min=0) =>{
+    return Math.random() * (max - min) + min;
 };
 
 const randomizeBreaks = () =>{
-    randomEnd = getRanTimePoint(timerEndSeconds, timerEndSeconds * 0.8)
+    randomEnd = getRanTimePoint(timerEndSeconds + (timerEndSeconds * 0.2), timerEndSeconds * 0.8)
     break1 = getRanTimePoint(timerEndSeconds * 0.3, timerEndSeconds * 0.1);
     break2 = getRanTimePoint(timerEndSeconds * 0.7, timerEndSeconds * 0.4);
 
     itdMainTimer.setStartTime(randomEnd);
     itdBp1Timer.setStartTime(break1);
     itdBp2Timer.setStartTime(break2);
+
+    /*
+    console.log(randomEnd);
+    console.log(break1);
+    console.log(break2);
+    */
 }
 
 const resetVisualTimer = () => {
@@ -49,7 +58,7 @@ const itdBp2Timer = new BasicTimer(break2, document, 2);
 
 const setRandomOscillate = (target) =>{
     if(!target.classList.contains('oscillate')) target.classList.add('oscillate');
-    oscAnimTime = Math.random() * (oscAnimMax - oscAnimMin) + oscAnimMin;
+    let oscAnimTime = getRanTimePoint(oscAnimMax, oscAnimMin); //Math.random() * (oscAnimMax - oscAnimMin) + oscAnimMin;
     target.style.setProperty('--randomized-anim', oscAnimTime + 's');
 }
 
