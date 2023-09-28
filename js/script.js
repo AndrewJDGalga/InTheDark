@@ -6,12 +6,34 @@ const restart = document.getElementById('itd-restart');
 const visualTimer = document.getElementById('itd-visual_timer');
 const timeoutNotice = document.getElementsByClassName('itd-timeout')[0];
 
-const timerEndSeconds = 10;
+async function getConfig() {
+    let raw = await fetch('config.json')
+        .catch(err => { console.log(err); });
 
-const oscillatFreq = 21600;
+    return (raw.status == 200) ? await raw.json() : {
+        "timerEndSeconds" : 60,
+        "oscillatFreq" : 21600,
+        "oscAnimMax" : 6,
+        "oscAnimMin" : 1.5
+    };
+}
+const config = await getConfig();
+
+let timerEndSeconds = config["timerEndSeconds"];
+let oscillatFreq = config["oscillatFreq"];
+let oscAnimMax = config["oscAnimMax"];
+let oscAnimMin = config["oscAnimMin"];
+
+console.log(timerEndSeconds + ' ' + oscillatFreq + ' ' + oscAnimMax + ' ' + oscAnimMin);
+
 let oscillatID = null;
+
+/*
+const timerEndSeconds = 60;
+const oscillatFreq = 21600;
 const oscAnimMax = 6;
 const oscAnimMin = 1.5;
+*/
 //let oscAnimTime = 2;
 
 let randomEnd = 0;
