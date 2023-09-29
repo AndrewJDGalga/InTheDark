@@ -1,4 +1,5 @@
 $alpha-zero: rgba(0,0,0,0);
+$login-size: 48px;
 $button-size: 10vmin;
 $button-min: 64px;
 $button-max-multiple: 3;
@@ -31,9 +32,10 @@ body {
 #itd-login {
     background-image: url('../assets/icons/eyeclosedlogo.svg');
     background-size: contain;
-    width: 48px;
-    height: 48px;
+    width: $login-size;
+    height: $login-size;
     float: right;
+    margin: $login-size/2;
 
     &:hover,
     &:active {
