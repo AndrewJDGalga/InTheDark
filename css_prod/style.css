@@ -38,13 +38,14 @@ body {
   padding: 8px;
   width: 11em;
   height: 6em;
-  /*
-  input {
-      display: block;
-  }
-  input[type='button']  {
-      display: inline;
-  }*/
+}
+.itd-login_menu input {
+  background-color: black;
+  color: white;
+}
+.itd-login_menu input[type=button]:hover, .itd-login_menu input[type=submit]:hover {
+  background-color: white;
+  color: black;
 }
 
 .itd-main {

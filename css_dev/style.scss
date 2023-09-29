@@ -55,13 +55,16 @@ body {
     width: 11em;
     height: 6em;
 
-    /*
-    input {
-        display: block;
+    input  {
+        background-color: black;
+        color: white;
+        
+        &[type='button']:hover,
+        &[type='submit']:hover {
+            background-color: white;
+            color: black;
+        }
     }
-    input[type='button']  {
-        display: inline;
-    }*/
 }
 
 .itd-main {
