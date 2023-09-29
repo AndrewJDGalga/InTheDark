@@ -38,9 +38,13 @@ body {
   padding: 8px;
   width: 11em;
   height: 6em;
-}
-.itd-login_menu input {
-  display: block;
+  /*
+  input {
+      display: block;
+  }
+  input[type='button']  {
+      display: inline;
+  }*/
 }
 
 .itd-main {

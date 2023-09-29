@@ -5,6 +5,8 @@ const pause = document.getElementById('itd-pause');
 const restart = document.getElementById('itd-restart');
 const visualTimer = document.getElementById('itd-visual_timer');
 const timeoutNotice = document.getElementsByClassName('itd-timeout')[0];
+const login = document.getElementById('itd-login');
+const loginForm = document.getElementsByClassName('itd-login_menu')[0];
 
 async function getConfig() {
     let raw = await fetch('config.json')
@@ -179,4 +181,9 @@ document.addEventListener(`btDone${itdBp1Timer.getEventNumber()}`, ()=>{
 document.addEventListener(`btDone${itdBp2Timer.getEventNumber()}`, ()=>{
     visualTimer.classList.remove('mid');
     visualTimer.classList.add('last');
+});
+
+
+login.addEventListener('click', ()=>{
+    loginForm.classList.remove("hidden");
 });
