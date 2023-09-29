@@ -28,21 +28,13 @@ console.log(timerEndSeconds + ' ' + oscillatFreq + ' ' + oscAnimMax + ' ' + oscA
 
 let oscillatID = null;
 
-/*
-const timerEndSeconds = 60;
-const oscillatFreq = 21600;
-const oscAnimMax = 6;
-const oscAnimMin = 1.5;
-*/
-//let oscAnimTime = 2;
-
 let randomEnd = 0;
 let break1 = 0;
 let break2 = 0;
 let fresh = true;
 
 //testtrack
-const audioTrack = new Audio('./assets/audio/Hello, Failure.wav'); //new Audio('./assets/audio/jumpscare_test.wav');
+const audioTrack = new Audio('./assets/audio/jumpscare_test.wav');
 const audioSting = new Audio('./assets/audio/Jumpscare Sound Effect.mp3');
 
 //from Mozilla
@@ -80,7 +72,7 @@ const itdBp2Timer = new BasicTimer(break2, document, 2);
 
 const setRandomOscillate = (target) =>{
     if(!target.classList.contains('oscillate')) target.classList.add('oscillate');
-    let oscAnimTime = getRanTimePoint(oscAnimMax, oscAnimMin); //Math.random() * (oscAnimMax - oscAnimMin) + oscAnimMin;
+    let oscAnimTime = getRanTimePoint(oscAnimMax, oscAnimMin);
     target.style.setProperty('--randomized-anim', oscAnimTime + 's');
 }
 

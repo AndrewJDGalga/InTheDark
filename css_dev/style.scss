@@ -28,6 +28,19 @@ body {
     background-color: black;
 }
 
+#itd-login {
+    background-image: url('../assets/icons/eyeclosedlogo.svg');
+    background-size: contain;
+    width: 48px;
+    height: 48px;
+    float: right;
+
+    &:hover,
+    &:active {
+        background-image: url('../assets/icons/eyeopenlogo.svg');
+    }
+}
+
 .itd-main {
     @include background-fix();
     display: flex;
