@@ -21,10 +21,26 @@ body {
   width: 48px;
   height: 48px;
   float: right;
-  margin: 24px;
+  position: relative;
+  right: 24px;
+  top: 24px;
 }
 #itd-login:hover, #itd-login:active {
   background-image: url("../assets/icons/eyeopenlogo.svg");
+}
+
+.itd-login_menu {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(200, 200, 200);
+  padding: 8px;
+  width: 11em;
+  height: 6em;
+}
+.itd-login_menu input {
+  display: block;
 }
 
 .itd-main {

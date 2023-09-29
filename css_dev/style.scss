@@ -35,11 +35,28 @@ body {
     width: $login-size;
     height: $login-size;
     float: right;
-    margin: $login-size/2;
+    position: relative;
+    right: $login-size/2;
+    top: $login-size/2;
 
     &:hover,
     &:active {
         background-image: url('../assets/icons/eyeopenlogo.svg');
+    }
+}
+
+.itd-login_menu {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $button-outline-color;
+    padding: 8px;
+    width: 11em;
+    height: 6em;
+
+    input {
+        display: block;
     }
 }
 
