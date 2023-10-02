@@ -12,3 +12,4 @@
 !*.js
 !appSettings.php
 !config.json
+!updateData.php
