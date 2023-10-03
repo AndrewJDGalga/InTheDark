@@ -11,4 +11,8 @@
         die();
     }
 
-    
+    $readData = json_decode(file_get_contents("../config.json"), false);
+
+    function processAudioFile($file, $customName, $readData) {
+        
+    }

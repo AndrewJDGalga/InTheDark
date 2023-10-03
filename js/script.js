@@ -1,4 +1,5 @@
 import BasicTimer from "./BasicTimer.js";
+import { sendForm } from "./basicAjax.js";
 
 const play = document.getElementById('itd-play');
 const pause = document.getElementById('itd-pause');
@@ -194,6 +195,7 @@ loginClose.addEventListener('click', ()=>{
     loginForm.classList.add("hidden");
 });
 
+/*
 const sendForm = (formContent) => {
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = () => {
@@ -210,10 +212,11 @@ const sendForm = (formContent) => {
     }
     xmlhttp.open('POST', './php/verify.php', true);
     xmlhttp.send(formContent);
-}
+}*/
 
 loginForm.addEventListener('submit', e=>{
     e.preventDefault();
     let converted = new FormData(loginForm);
-    sendForm(converted);
+    //sendForm(converted);
+    sendForm(converted, './php/verify.php', './php/appSettings.php', loginFeedback);
 });
