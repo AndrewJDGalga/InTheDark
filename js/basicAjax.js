@@ -4,9 +4,10 @@ export function sendForm (formContent, targetVerifier, nextLocation, feedback) {
     xmlhttp.onreadystatechange = () => {
         if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             const response = xmlhttp.responseText;
-            if(response === "incorrect") {
-                feedback.innerText = "Credentials incorrect."
+            if(response === 'invalid') {
+                feedback.innerText = 'Credentials incorrect.'
             } else {
+                feedback.innerText = 'Credentials correct.'
                 window.location.replace(nextLocation);
             }
         } else {
