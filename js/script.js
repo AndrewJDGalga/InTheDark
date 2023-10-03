@@ -212,3 +212,8 @@ const sendForm = (formContent) => {
     xmlhttp.send(formContent);
 }
 
+loginForm.addEventListener('submit', e=>{
+    e.preventDefault();
+    let converted = new FormData(loginForm);
+    sendForm(converted);
+});
