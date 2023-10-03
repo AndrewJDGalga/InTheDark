@@ -1,5 +1,4 @@
 import BasicTimer from "./BasicTimer.js";
-import { sendForm } from "./basicAjax.js";
 
 const play = document.getElementById('itd-play');
 const pause = document.getElementById('itd-pause');
@@ -195,8 +194,26 @@ loginClose.addEventListener('click', ()=>{
     loginForm.classList.add("hidden");
 });
 
+const sendForm = (formContent) => {
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = () => {
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            const response = xmlhttp.responseText;
+            if(response === 'invalid') {
+                loginFeedback.innerText = 'Credentials incorrect.'
+            } else {
+                window.location.replace('./php/appSettings.php');
+            }
+        } else {
+            loginFeedback.innerText = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open('POST', './php/verify.php', true);
+    xmlhttp.send(formContent);
+}
+
 loginForm.addEventListener('submit', e=>{
     e.preventDefault();
     let converted = new FormData(loginForm);
-    sendForm(converted, './php/verify.php', './php/appSettings.php', loginFeedback);
+    sendForm(converted);
 });
