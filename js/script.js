@@ -199,7 +199,16 @@ const sendForm = (formContent) => {
     xmlhttp.onreadystatechange = () => {
         if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             const response = xmlhttp.responseText;
-            
+            if(response === "incorrect") {
+                loginFeedback.innerText = "Credentials incorrect."
+            } else {
+                window.location.replace('./php/appSettings.php');
+            }
+        } else {
+            loginFeedback.innerText = xmlhttp.responseText;
         }
     }
+    xmlhttp.open('POST', './php/verify.php', true);
+    xmlhttp.send(formContent);
 }
+
