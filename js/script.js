@@ -8,6 +8,7 @@ const timeoutNotice = document.getElementsByClassName('itd-timeout')[0];
 const loginOpen = document.getElementById('itd-login');
 const loginForm = document.getElementsByClassName('itd-login_menu')[0];
 const loginClose = document.getElementById('itd-login_menu_close');
+const loginFeedback = document.getElementById('itd-feedback');
 
 async function getConfig() {
     let raw = await fetch('config.json')
@@ -192,3 +193,13 @@ loginOpen.addEventListener('click', ()=>{
 loginClose.addEventListener('click', ()=>{
     loginForm.classList.add("hidden");
 });
+
+const sendForm = (formContent) => {
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = () => {
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            const response = xmlhttp.responseText;
+            
+        }
+    }
+}
