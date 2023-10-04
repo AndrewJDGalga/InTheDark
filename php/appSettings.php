@@ -37,8 +37,10 @@
             <input type="file" name="stingFile">
             <input type="submit" value="Submit">
         </form>
-        <p id="itd-feedback"></p>
-        <button id="itd-back">Back</button>
+        <div class="itd-interface_container">
+            <p id="itd-feedback"></p>
+            <button id="itd-back">Back</button>
+        </div>
     </main>
     <script>
         const form = document.getElementById('itd-settings');

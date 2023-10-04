@@ -10,4 +10,17 @@ body {
   background-color: black;
 }
 
+#itd-settings,
+.itd-interface_container {
+  width: 50%;
+  min-width: 128px;
+  margin: 0 auto;
+}
+
+#itd-settings {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
 /*# sourceMappingURL=settingsStyle.css.map */
