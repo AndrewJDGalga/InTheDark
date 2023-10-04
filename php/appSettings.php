@@ -71,6 +71,7 @@
         form.addEventListener('submit', (e)=>{
             e.preventDefault();
             let converted = new FormData(form);
+            sendForm(converted);
         });
     </script>
 </body>
