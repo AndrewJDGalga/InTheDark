@@ -44,6 +44,26 @@
         const form = document.getElementById('itd-settings');
         const feedback = document.getElementById('itd-feedback');
 
+        const sendForm = (formContent) => {
+            let xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = () => {
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    const result = xmlhttp.responseText;
+                    const jsonConversion = JSON.parse(result);
+                    const test = Object.values(jsonConversion);
+                    feedback.innerText = "";
+                    test.forEach(element => {
+                        feedback.innerText += element;
+                        feedback.innerText += "\n";
+                    });
+                } else {
+                    feedback.innerText = "Error code: " + xmlhttp.status + ", Error status: " + xmlhttp.readyState;
+                }
+            }
+            xmlhttp.open('POST', 'updateData.php', true);
+            xmlhttp.send(formContent);
+        }
+
         document.getElementById('itd-back').addEventListener('click', ()=>{
             window.location.replace('../index.html');
         });
