@@ -22,7 +22,7 @@
 </head>
 <body>
     <main>
-        <form method="POST" action="updateData.php" enctype="multipart/form-data">
+        <form id="itd-settings" method="POST" action="" enctype="multipart/form-data">
         <label for="timerLength">Timer length in seconds: </label>
             <input type="number" name="timerLength" step="0.01" value="<?php echo $readData->timerEndSeconds ?>">
             <label for="animOcillationMin">Animation ocillation minimum in minutes: </label>
@@ -37,11 +37,20 @@
             <input type="file" name="stingFile">
             <input type="submit" value="Submit">
         </form>
+        <p id="itd-feedback"></p>
         <button id="itd-back">Back</button>
     </main>
     <script>
+        const form = document.getElementById('itd-settings');
+        const feedback = document.getElementById('itd-feedback');
+
         document.getElementById('itd-back').addEventListener('click', ()=>{
             window.location.replace('../index.html');
+        });
+
+        form.addEventListener('submit', (e)=>{
+            e.preventDefault();
+            let converted = new FormData(form);
         });
     </script>
 </body>
