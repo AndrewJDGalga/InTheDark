@@ -1,3 +1,5 @@
+@use 'commonStyle';
+
 $alpha-zero: rgba(0,0,0,0);
 $login-size: 48px;
 $button-size: 10vmin;
@@ -17,18 +19,6 @@ $button-outline-color: rgb(200, 200, 200);
     --randomized-anim: 2s;
 }
 
-html,
-body,
-.itd-main {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    background-color: black;
-}
-
 #itd-login {
     background-image: url('../assets/icons/eyeclosedlogo.svg');
     background-size: contain;
@@ -36,8 +26,8 @@ body {
     height: $login-size;
     float: right;
     position: relative;
-    right: $login-size/2;
-    top: $login-size/2;
+    right: calc($login-size/2);
+    top: calc($login-size/2);
 
     &:hover,
     &:active {

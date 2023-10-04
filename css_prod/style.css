@@ -1,8 +1,3 @@
-:root {
-  /*need runtime variable*/
-  --randomized-anim: 2s;
-}
-
 html,
 body,
 .itd-main {
@@ -13,6 +8,11 @@ body {
   margin: 0;
   padding: 0;
   background-color: black;
+}
+
+:root {
+  /*need runtime variable*/
+  --randomized-anim: 2s;
 }
 
 #itd-login {
