@@ -38,4 +38,24 @@
         return $result;
     }
 
-    
+    if(isset($_POST["timerLength"])) {
+        $processingResult = [];
+        if(isset($_FILES["musicFile"]) && $_FILES["musicFile"]["name"] != "") {
+            if(processAudioFile($_FILES["musicFile"], "main", $readData) !== 0) {
+                $processingResult['mainAudio'] = ['Failed to upload main audio track. Ensure the size is less than 50 MB.'];
+            } else {
+                $processingResult['mainAudio'] = ['Main audio successfully uploaded.'];
+            }
+        }
+        if(isset($_FILES["stingFile"]) && $_FILES["stingFile"]["name"] != "") {
+            if(processAudioFile($_FILES["stingFile"], "sting", $readData) !== 0) {
+                $processingResult['stingAudio'] = ['Failed to upload sting audio track. Ensure the size is less than 50 MB.'];
+            } else {
+                $processingResult['stingAudio'] = ['Sting audio successfully uploaded.'];
+            }
+        }
+
+        
+    }
+
+    die();
