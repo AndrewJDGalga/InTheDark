@@ -55,7 +55,21 @@
             }
         }
 
+        $readData->timerEndSeconds = htmlspecialchars($_POST["timerLength"]);
+        $readData->oscAnimMin = htmlspecialchars($_POST["animOcillationMin"]);
+        $readData->oscAnimMax = htmlspecialchars($_POST["animOcillationMax"]);
+        $readData->oscillatFreq = htmlspecialchars($_POST["animCheckTimeframe"]);
+
+        $json_package = json_encode($readData, JSON_PRETTY_PRINT|JSON_PRESERVE_ZERO_FRACTION|JSON_UNESCAPED_SLASHES);
+        $fp = fopen("../config.json", "w");
+        fwrite($fp, $json_package);
+        fclose($fp);
+
+        $processingResult['dataChanged'] = ['Values successfully uploaded.'];
         
+        echo json_encode($processingResult);
+    } else {
+        echo json_encode('Critical data update error.');
     }
 
     die();
