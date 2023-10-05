@@ -1,4 +1,5 @@
 <?php
+    print_r($_POST);
     if(isset($_POST["itd-uname"])) {
         $env = file_get_contents('.env');
         $sploded_env = explode("\n", $env);

@@ -2,5 +2,7 @@
     "timerEndSeconds" : 240,
     "oscillatFreq" : 21600,
     "oscAnimMax" : 6,
-    "oscAnimMin" : 1.5
+    "oscAnimMin" : 1.5,
+    "mainAudio": "assets/audio/main.wav",
+    "mainStinger": "assets/audio/sting.mp3"
 }

@@ -54,12 +54,6 @@ const randomizeBreaks = () =>{
     itdMainTimer.setStartTime(randomEnd);
     itdBp1Timer.setStartTime(break1);
     itdBp2Timer.setStartTime(break2);
-
-    /*
-    console.log(randomEnd);
-    console.log(break1);
-    console.log(break2);
-    */
 }
 
 const resetVisualTimer = () => {
@@ -158,6 +152,12 @@ restart.addEventListener('click', ()=>{
     audioTrack.currentTime = 0;
 
     flipButtonClass(pause, play, 'hidden');
+
+    audioTrack.pause();
+    audioTrack.currentTime = 0;
+    audioTrack.play();
+    audioSting.pause();
+    audioSting.currentTime = 0;
 })
 
 document.addEventListener(`btDone${itdMainTimer.getEventNumber()}`, ()=>{
@@ -202,13 +202,13 @@ const sendForm = (formContent) => {
             if(response === 'invalid') {
                 loginFeedback.innerText = 'Credentials incorrect.'
             } else {
-                window.location.replace('./php/appSettings.php');
+                window.location.replace('php/appSettings.php');
             }
         } else {
             loginFeedback.innerText = "Error code: " + xmlhttp.status + ", Error status: " + xmlhttp.readyState;
         }
     }
-    xmlhttp.open('POST', './php/verify.php', true);
+    xmlhttp.open('POST', 'php/verifier.php', true);
     xmlhttp.send(formContent);
 }
 
