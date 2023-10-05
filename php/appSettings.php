@@ -9,6 +9,7 @@
         $cookiename = trim($cookienameRaw[1]);
         $cookieval = trim($cookievalRaw[1]);
 
+        
         if(!isset($_COOKIE[$cookiename]) || !$_COOKIE[$cookiename] === $cookieval){
             header("Location: ../index.html");
             die();
@@ -19,6 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>In The Dark Timer Settings</title>
+    <link href="../css_prod/settingsStyle.css" rel="stylesheet">
 </head>
 <body>
     <main>
