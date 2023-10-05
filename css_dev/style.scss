@@ -41,9 +41,10 @@ $button-outline-color: rgb(200, 200, 200);
     top: 50%;
     transform: translate(-50%, -50%);
     background-color: $button-outline-color;
+    color: black;
     padding: 8px;
     width: 11em;
-    height: 6em;
+    height: fit-content;
 
     input  {
         background-color: black;

@@ -36,9 +36,10 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(200, 200, 200);
+  color: black;
   padding: 8px;
   width: 11em;
-  height: 6em;
+  height: fit-content;
 }
 .itd-login_menu input {
   background-color: black;

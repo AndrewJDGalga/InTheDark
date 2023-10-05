@@ -15,10 +15,12 @@ async function getConfig() {
         .catch(err => { console.log(err); });
 
     return (raw.status == 200) ? await raw.json() : {
-        "timerEndSeconds" : 60,
+        "timerEndSeconds" : 240,
         "oscillatFreq" : 21600,
         "oscAnimMax" : 6,
-        "oscAnimMin" : 1.5
+        "oscAnimMin" : 1.5,
+        "mainAudio": "assets/audio/main.wav",
+        "mainStinger": "assets/audio/sting.mp3"
     };
 }
 const config = await getConfig();
@@ -28,7 +30,10 @@ let oscillatFreq = config["oscillatFreq"];
 let oscAnimMax = config["oscAnimMax"];
 let oscAnimMin = config["oscAnimMin"];
 
-console.log(timerEndSeconds + ' ' + oscillatFreq + ' ' + oscAnimMax + ' ' + oscAnimMin);
+const mainAudioPath = config["mainAudio"];
+const stingAudioPath = config["mainStinger"];
+
+console.log(timerEndSeconds);
 
 let oscillatID = null;
 
@@ -38,8 +43,8 @@ let break2 = 0;
 let fresh = true;
 
 //testtrack
-const audioTrack = new Audio('./assets/audio/jumpscare_test.wav');
-const audioSting = new Audio('./assets/audio/Jumpscare Sound Effect.mp3');
+const audioTrack = new Audio(mainAudioPath);
+const audioSting = new Audio(stingAudioPath);
 
 //from Mozilla
 const getRanTimePoint = (max, min=0) =>{
