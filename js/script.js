@@ -25,15 +25,13 @@ async function getConfig() {
 }
 const config = await getConfig();
 
-let timerEndSeconds = config["timerEndSeconds"];
-let oscillatFreq = config["oscillatFreq"];
-let oscAnimMax = config["oscAnimMax"];
-let oscAnimMin = config["oscAnimMin"];
+let timerEndSeconds = parseFloat(config["timerEndSeconds"]);
+let oscillatFreq = parseFloat(config["oscillatFreq"]);
+let oscAnimMax = parseFloat(config["oscAnimMax"]);
+let oscAnimMin = parseFloat(config["oscAnimMin"]);
 
 const mainAudioPath = config["mainAudio"];
 const stingAudioPath = config["mainStinger"];
-
-console.log(timerEndSeconds);
 
 let oscillatID = null;
 
