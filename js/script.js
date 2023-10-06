@@ -208,7 +208,8 @@ const sendForm = (formContent) => {
                 window.location.replace('php/appSettings.php');
             }
         } else {
-            loginFeedback.innerText = 'Error code: ' + xmlhttp.status + ', Error status: ' + xmlhttp.readyState;
+            feedback.innerText = 'Pending...';
+            //console.log( "Error code: " + xmlhttp.status + ", Error status: " + xmlhttp.readyState);
         }
     }
     xmlhttp.open('POST', 'php/verifier.php', true);

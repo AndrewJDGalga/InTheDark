@@ -61,7 +61,8 @@
                         feedback.innerText += "\n";
                     });
                 } else {
-                    feedback.innerText = "Error code: " + xmlhttp.status + ", Error status: " + xmlhttp.readyState;
+                    feedback.innerText = 'Uploading...';
+                    //console.log( "Error code: " + xmlhttp.status + ", Error status: " + xmlhttp.readyState);
                 }
             }
             xmlhttp.open('POST', 'updateData.php', true);
